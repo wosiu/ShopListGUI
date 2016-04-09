@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def searches(request):
-    searchEntries = Search.objects.all()
+    searchEntries = Search.objects.all().order_by('-id')
     template = loader.get_template('searches.html')
     context = {
         'searchEntries': searchEntries,
@@ -15,7 +15,7 @@ def searches(request):
 
 
 def offers(request, search_id):
-    offerEntries = Offer.objects.filter(search_id__exact=6)
+    offerEntries = Offer.objects.filter(search_id__exact=int(search_id)).order_by('price')
     template = loader.get_template('offers.html')
     context = {
         'offerEntries': offerEntries,
@@ -26,5 +26,6 @@ def offers(request, search_id):
 def choose(request, offer_id):
     offer = Offer.objects.get(id=offer_id)
     search = Search.objects.get(id=offer.search_id)
-    
-    return redirect('offers')
+    search.chosen_offer = offer
+    search.save()
+    return offers(request, search.id)

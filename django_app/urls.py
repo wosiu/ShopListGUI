@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^searches/', 'AlexaShopList.views.searches', name='searches'),
     url(r'^offers/(?P<search_id>\d+)', 'AlexaShopList.views.offers', name='offers'),
+    url(r'^choose/(?P<offer_id>\d+)', 'AlexaShopList.views.choose', name='choose'),
 ]
