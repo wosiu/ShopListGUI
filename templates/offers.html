@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <title>{% block title %}Oferty</title>{% endblock %}
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+{% load staticfiles %}
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/static/js/bootstrap.js"></script>
+
+
+{% block content %}
+    <h1>Oferty</h1>
+    <hr>
+
+
+
+    <table>
+        <thead>
+            <th>Nazwa produktu</th>
+            <th>Cena</th>
+            <th>Sklep</th>
+            <th>Wybierz</th>
+        </thead>
+        <tbody>
+        {% for offerEntry in offerEntries %}
+            <tr>
+                <td>
+                    <a href="{{ offerEntry.shop_url }}">{{ offerEntry.shop_product_name }}</a>
+                </td>
+                <td>{{ offerEntry.price|floatformat:2 }} zł</td>
+                <td>{{ offerEntry.shop_name }}</td>
+{#                <td><img src="{{ offerEntry.image_link }}" height="30px"></td>#}
+                <td>
+                    <a href="/choose/{{ offerEntry.id }}">
+                        <img src="/static/img/choose.png" width="30px"/>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</body>
+</html>
