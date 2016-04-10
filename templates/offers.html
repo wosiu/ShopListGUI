@@ -26,23 +26,23 @@
     <hr>
 
 
-    <table>
+    <table class="table-bordered" style="padding: 5px">
         <thead>
-            <th>Nazwa produktu</th>
-            <th>Cena</th>
-            <th>Sklep</th>
-            <th>Wybierz</th>
+            <th style="padding: 5px">Nazwa produktu</th>
+            <th style="padding: 5px">Cena</th>
+            <th style="padding: 5px">Sklep</th>
+            <th style="padding: 5px">Wybierz</th>
         </thead>
         <tbody>
         {% for offerEntry in offerEntries %}
             <tr>
-                <td>
+                <td style="padding: 5px">
                     <a href="{{ offerEntry.shop_url }}">{{ offerEntry.shop_product_name }}</a>
                 </td>
-                <td>{{ offerEntry.price|floatformat:2 }} zł</td>
-                <td>{{ offerEntry.shop_name }}</td>
+                <td style="padding: 5px">{{ offerEntry.price|floatformat:2 }} zł</td>
+                <td style="padding: 5px">{{ offerEntry.shop_name }}</td>
 {#                <td><img src="{{ offerEntry.image_link }}" height="30px"></td>#}
-                <td>
+                <td style="padding: 5px">
                     <a href="/choose/{{ offerEntry.id }}">
                         <img src="/static/img/choose.png" width="30px"/>
                     </a>

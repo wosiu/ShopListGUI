@@ -24,26 +24,26 @@
 
 
 
-    <table>
+    <table class="table-bordered" style="padding: 5px">
         <thead>
-            <th>Nr</th>
-            <th>Wyszukiwana fraza</th>
-            <th>Data</th>
-            <th>Wybrana oferta</th>
-            <th>Zmień ofertę</th>
+            <th style="padding: 5px">Nr</th>
+            <th style="padding: 5px">Wyszukiwana fraza</th>
+            <th style="padding: 5px">Data</th>
+            <th style="padding: 5px">Wybrana oferta</th>
+            <th style="padding: 5px">Zmień ofertę</th>
         </thead>
         <tbody>
             {% for searchEntry in searchEntries %}
                 <tr>
-                    <td>{{ searchEntry.id }}</td>
-                    <td>{{ searchEntry.search_phrase }}</td>
-                    <td>{{ searchEntry.date }}</td>
-                    <td>
+                    <td style="padding: 5px">{{ searchEntry.id }}</td>
+                    <td style="padding: 5px">{{ searchEntry.search_phrase }}</td>
+                    <td style="padding: 5px">{{ searchEntry.date }}</td>
+                    <td style="padding: 5px">
                         <a href="{{ searchEntry.chosen_offer.shop_url }}"> <!-- searchEntry.chosen_offer_obj -->
                             {{ searchEntry.chosen_offer.shop_product_name }}
                         </a>
                     </td>
-                    <td>
+                    <td style="padding: 5px">
                         <a href="/offers/{{ searchEntry.id }}">
                             <img src="/static/img/choose.png" height="30px"/>
                         </a>
